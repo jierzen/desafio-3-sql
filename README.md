@@ -73,7 +73,7 @@ SELECT u.nombre, u.email, p.titulo, p.contenido
 FROM usuario u 
 INNER JOIN post p ON u.id = p.usuario_id;
 ```
-![p2]()
+![p2](https://github.com/jierzen/desafio-3-sql/blob/main/P2.png)
 
 ```sql
 --3. Muestra el id, título y contenido de los posts de los administradores. El administrador puede ser cualquier id. (1 Punto)
@@ -83,7 +83,7 @@ FROM usuario u
 INNER JOIN post p ON u.id = p.usuario_id
 WHERE u.rol = 'admin';
 ```
-![p3]()
+![p3](https://github.com/jierzen/desafio-3-sql/blob/main/P3.png)
 
 ```sql
 --4. Cuenta la cantidad de posts de cada usuario. (1 Punto)
@@ -110,7 +110,7 @@ FROM usuario u
 LEFT JOIN post p ON u.id = p.usuario_id
 GROUP BY u.id;
 ```
-![p4]()
+![p4](https://github.com/jierzen/desafio-3-sql/blob/main/P4.png)
 
 ```sql
 --5. Muestra el email del usuario que ha creado más posts. (1 Punto)
@@ -123,7 +123,7 @@ GROUP BY u.email
 ORDER BY COUNT(p.id) DESC
 LIMIT 1;
 ```
-![p5]()
+![p5](https://github.com/jierzen/desafio-3-sql/blob/main/P5.png)
 
 ```sql
 --6. Muestra la fecha del último post de cada usuario. (1 Punto)
@@ -134,7 +134,7 @@ FROM usuario u
 LEFT JOIN post p ON u.id = p.usuario_id
 GROUP BY u.email;
 ```
-![p6]()
+![p6](https://github.com/jierzen/desafio-3-sql/blob/main/P6.png)
 
 ```sql
 --7. Muestra el título y contenido del post (artículo) con más comentarios. (1 Punto) 
@@ -146,7 +146,7 @@ GROUP BY p.id, p.titulo, p.contenido
 ORDER BY COUNT(c.id) DESC
 LIMIT 1;
 ```
-![p7]()
+![p7](https://github.com/jierzen/desafio-3-sql/blob/main/P7.png)
 
 ```sql
 --8. Muestra en una tabla el título de cada post, el contenido de cada post y el contenido de cada comentario asociado a los posts mostrados, 
@@ -157,7 +157,7 @@ FROM post p
 LEFT JOIN comentario c ON p.id = c.post_id
 JOIN usuario u ON p.usuario_id = u.id;
 ```
-![p8]()
+![p8](https://github.com/jierzen/desafio-3-sql/blob/main/P8.png)
 
 ```sql
 --9. Muestra el contenido del último comentario de cada usuario. (1 Punto) 
@@ -172,7 +172,7 @@ WHERE c.fecha_creacion IN (
 )
 GROUP BY u.email, c.contenido;
 ```
-![p9]()
+![p9](https://github.com/jierzen/desafio-3-sql/blob/main/P9.png)
 
 ```sql
 --10. Muestra los emails de los usuarios que no han escrito ningún comentario. 
