@@ -1,7 +1,5 @@
-# Desafío 2 - Módulo SQL 🚀
-## Set de Datos 📊
+--1. SETUP: Crea y agrega al entregable las consultas para completar el setup de acuerdo a lo pedido. (1 Punto)
 
-```sql
 CREATE DATABASE desafio3_jorge_espinoza_001;
 
 \c desafio3_jorge_espinoza_001;
@@ -63,35 +61,28 @@ INSERT INTO comentario(contenido,fecha_creacion,usuario_id,post_id) VALUES
 ('Unity es increíblemente poderoso para desarrolladores independientes.','2024-09-26 16:45:00',1,14),
 ('La seguridad informática no debe tomarse a la ligera.','2024-10-31 11:30:00',4,15),
 ('Creo que Machine Learning es el futuro.','2024-01-27 13:50:00',2,9);
-```
 
-```sql
 --2.Cruza los datos de la tabla usuarios y posts, mostrando las siguientes columnas: 
 --nombre y email del usuario junto al título y contenido del post. (1 Punto)
 
 SELECT u.nombre, u.email, p.titulo, p.contenido 
 FROM usuario u 
 INNER JOIN post p ON u.id = p.usuario_id;
-```
-![p2]()
 
-```sql
+
 --3. Muestra el id, título y contenido de los posts de los administradores. El administrador puede ser cualquier id. (1 Punto)
 
 SELECT p.id, p.titulo, p.contenido 
 FROM usuario u 
 INNER JOIN post p ON u.id = p.usuario_id
 WHERE u.rol = 'admin';
-```
-![p3]()
 
-```sql
+
 --4. Cuenta la cantidad de posts de cada usuario. (1 Punto)
 --La tabla resultante debe mostrar el id e email del usuario junto con la cantidad de posts de cada usuario.
 --Hint: Aquí hay diferencia entre utilizar inner join, left join o right join, prueba con todas y con eso determina 
 --cuál es la correcta. No da lo mismo la tabla desde la que se parte.
 
---Consulta de estudio
 SELECT u.id, u.email, COUNT(p.id) cantidad_posts
 FROM usuario u 
 INNER JOIN post p ON u.id = p.usuario_id
@@ -109,10 +100,7 @@ SELECT u.id, u.email, COUNT(p.id) AS cantidad_posts
 FROM usuario u 
 LEFT JOIN post p ON u.id = p.usuario_id
 GROUP BY u.id;
-```
-![p4]()
 
-```sql
 --5. Muestra el email del usuario que ha creado más posts. (1 Punto)
 --Aquí la tabla resultante tiene un único registro y muestra solo el email. 
 
@@ -122,10 +110,8 @@ JOIN post p ON u.id = p.usuario_id
 GROUP BY u.email
 ORDER BY COUNT(p.id) DESC
 LIMIT 1;
-```
-![p5]()
 
-```sql
+
 --6. Muestra la fecha del último post de cada usuario. (1 Punto)
 --Hint: Utiliza la función de agregado MAX sobre la fecha de creación.
 
@@ -133,10 +119,8 @@ SELECT u.email, MAX(p.fecha_creacion) AS fecha_ultimo_post
 FROM usuario u 
 LEFT JOIN post p ON u.id = p.usuario_id
 GROUP BY u.email;
-```
-![p6]()
 
-```sql
+
 --7. Muestra el título y contenido del post (artículo) con más comentarios. (1 Punto) 
 
 SELECT p.titulo, p.contenido
@@ -145,10 +129,8 @@ JOIN comentario c ON p.id = c.post_id
 GROUP BY p.id, p.titulo, p.contenido
 ORDER BY COUNT(c.id) DESC
 LIMIT 1;
-```
-![p7]()
 
-```sql
+
 --8. Muestra en una tabla el título de cada post, el contenido de cada post y el contenido de cada comentario asociado a los posts mostrados, 
 --junto con el email del usuario que lo escribió. (1 Punto) 
 
@@ -156,10 +138,8 @@ SELECT p.titulo, p.contenido AS post_contenido, c.contenido AS comentario_conten
 FROM post p
 LEFT JOIN comentario c ON p.id = c.post_id
 JOIN usuario u ON p.usuario_id = u.id;
-```
-![p8]()
 
-```sql
+
 --9. Muestra el contenido del último comentario de cada usuario. (1 Punto) 
 
 SELECT u.email, c.contenido
@@ -171,10 +151,7 @@ WHERE c.fecha_creacion IN (
     WHERE c2.usuario_id = c.usuario_id
 )
 GROUP BY u.email, c.contenido;
-```
-![p9]()
 
-```sql
 --10. Muestra los emails de los usuarios que no han escrito ningún comentario. 
 --Hint: Recuerda el uso de Having (1 Punto)
 
@@ -183,8 +160,3 @@ FROM usuario u
 LEFT JOIN comentario c ON u.id = c.usuario_id
 GROUP BY u.email
 HAVING COUNT(c.id) = 0;
-```
-![p10]()
-
-## Desarrollador 👨‍💻
-Este desafío fue desarrollado por: `Jorge Espinoza Ramirez`
