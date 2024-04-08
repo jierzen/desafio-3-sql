@@ -184,7 +184,7 @@ LEFT JOIN comentario c ON u.id = c.usuario_id
 GROUP BY u.email
 HAVING COUNT(c.id) = 0;
 ```
-![p10]()
+![p10](https://github.com/jierzen/desafio-3-sql/blob/main/P10.png)
 
 ## Desarrollador 👨‍💻
 Este desafío fue desarrollado por: `Jorge Espinoza Ramirez`
